@@ -1,211 +1,99 @@
-// Import Lucide icons library
-import lucide from "lucide"
+// ── Mobile drawer ──────────────────────────────────
+const burgerBtn = document.getElementById('burgerBtn')
+const drawer    = document.getElementById('drawer')
 
-// Import Leaflet library for map functionality
-import L from "leaflet"
-
-// Inicialização dos ícones Lucide
-lucide.createIcons()
-
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-const mobileMenu = document.getElementById("mobileMenu")
-
-mobileMenuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("active")
+burgerBtn.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('hidden')
+    drawer.classList.toggle('flex', !isOpen)
+    burgerBtn.setAttribute('aria-expanded', String(!isOpen))
 })
 
-// Fechar menu mobile ao clicar em um link
-const mobileNavLinks = document.querySelectorAll(".mobile-nav-link")
-mobileNavLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("active")
-  })
-})
-
-// Smooth scroll para links de navegação
-const navLinks = document.querySelectorAll('a[href^="#"]')
-navLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault()
-    const targetId = link.getAttribute("href")
-    const targetSection = document.querySelector(targetId)
-
-    if (targetSection) {
-      const headerHeight = document.querySelector(".header").offsetHeight
-      const targetPosition = targetSection.offsetTop - headerHeight
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      })
-    }
-  })
-})
-
-// Inicializar Mapa
-function initMap() {
-  // Coordenadas da Av. Paulista, 1000 - São Paulo/SP
-  const lat = -23.5613
-  const lng = -46.6565
-
-  // Criar o mapa
-  const map = L.map("map").setView([lat, lng], 16)
-
-  // Adicionar tiles do OpenStreetMap
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap contributors",
-  }).addTo(map)
-
-  // Adicionar marcador
-  const marker = L.marker([lat, lng]).addTo(map)
-
-  // Popup do marcador
-  marker
-    .bindPopup(`
-        <div style="text-align: center; padding: 10px;">
-            <strong>Dr. Ricardo Silva</strong><br>
-            Advocacia & Consultoria<br>
-            <small>Av. Paulista, 1000 - São Paulo/SP</small>
-        </div>
-    `)
-    .openPopup()
-}
-
-// Inicializar mapa quando a página carregar
-document.addEventListener("DOMContentLoaded", () => {
-  // Verificar se o elemento do mapa existe
-  if (document.getElementById("map")) {
-    initMap()
-  }
-})
-
-// Animação de scroll para elementos
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.style.transform = "translateY(0)"
-    }
-  })
-}, observerOptions)
-
-// Aplicar animação aos cards
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedElements = document.querySelectorAll(".area-card, .depoimento-card")
-
-  animatedElements.forEach((el) => {
-    el.style.opacity = "0"
-    el.style.transform = "translateY(20px)"
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-    observer.observe(el)
-  })
-})
-
-// Função para WhatsApp
-function openWhatsApp(message = "") {
-  const phone = "5511999999999" // Número do WhatsApp
-  const defaultMessage = "Olá! Gostaria de agendar uma consulta gratuita."
-  const finalMessage = message || defaultMessage
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`
-  window.open(url, "_blank")
-}
-
-// Adicionar evento aos botões de WhatsApp
-document.addEventListener("DOMContentLoaded", () => {
-  const whatsappButtons = document.querySelectorAll(".btn-primary")
-  whatsappButtons.forEach((btn) => {
-    if (btn.textContent.includes("WhatsApp") || btn.textContent.includes("Consulta")) {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault()
-        openWhatsApp()
-      })
-    }
-  })
-})
-
-// Header scroll effect
-window.addEventListener("scroll", () => {
-  const header = document.querySelector(".header")
-  if (window.scrollY > 100) {
-    header.style.backgroundColor = "rgba(255, 255, 255, 0.98)"
-    header.style.boxShadow = "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
-  } else {
-    header.style.backgroundColor = "rgba(255, 255, 255, 0.95)"
-    header.style.boxShadow = "none"
-  }
-})
-
-// Formulário de contato (se necessário no futuro)
-function handleContactForm(event) {
-  event.preventDefault()
-
-  // Aqui você pode adicionar a lógica para enviar o formulário
-  // Por exemplo, enviar para um serviço de email ou API
-
-  alert("Mensagem enviada com sucesso! Entraremos em contato em breve.")
-}
-
-// Lazy loading para imagens
-document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll('img[src*="placeholder"]')
-
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target
-        img.style.opacity = "0"
-        img.style.transition = "opacity 0.3s"
-
-        setTimeout(() => {
-          img.style.opacity = "1"
-        }, 100)
-
-        observer.unobserve(img)
-      }
+document.querySelectorAll('.drawer-link').forEach(el =>
+    el.addEventListener('click', () => {
+        drawer.classList.add('hidden')
+        drawer.classList.remove('flex')
+        burgerBtn.setAttribute('aria-expanded', 'false')
     })
-  })
+)
 
-  images.forEach((img) => imageObserver.observe(img))
-})
+// ── Header scroll shadow ────────────────────────────
+const header = document.getElementById('header')
+window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 40
+        ? '0 2px 24px rgba(0,0,0,0.25)'
+        : ''
+    highlightNav()
+}, { passive: true })
 
-// Função para destacar seção ativa na navegação
-function highlightActiveSection() {
-  const sections = document.querySelectorAll("section[id]")
-  const navLinks = document.querySelectorAll(".nav-link")
-
-  let current = ""
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop
-    const sectionHeight = section.clientHeight
-
-    if (window.scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id")
-    }
-  })
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active")
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active")
-    }
-  })
+// ── Active nav link ─────────────────────────────────
+function highlightNav() {
+    const sections = document.querySelectorAll('section[id]')
+    let current = ''
+    sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id
+    })
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const isActive = link.getAttribute('href') === `#${current}`
+        link.style.color = isActive ? '#ffffff' : ''
+        link.style.fontWeight = isActive ? '700' : ''
+    })
 }
 
-window.addEventListener("scroll", highlightActiveSection)
+// ── Scroll reveal ───────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible')
+            observer.unobserve(e.target)
+        }
+    })
+}, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' })
 
-// Adicionar classe active ao CSS
-const style = document.createElement("style")
-style.textContent = `
-    .nav-link.active {
-        color: #d97706 !important;
-        font-weight: 600;
-    }
-`
-document.head.appendChild(style)
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    initMap()
+})
+
+// ── FAQ accordion ───────────────────────────────────
+document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item')
+        const isOpen = item.classList.contains('open')
+
+        // close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'))
+        document.querySelectorAll('.faq-btn').forEach(b => {
+            b.closest('.faq-item').querySelector('.faq-answer').style.paddingTop = '0'
+        })
+
+        if (!isOpen) {
+            item.classList.add('open')
+        }
+    })
+})
+
+// ── Leaflet map ─────────────────────────────────────
+function initMap() {
+    const mapEl = document.getElementById('map')
+    if (!mapEl || typeof L === 'undefined') return
+
+    const lat = -23.5613, lng = -46.6565
+    const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 16)
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map)
+
+    const icon = L.divIcon({
+        className: '',
+        html: `<div style="width:36px;height:36px;background:#18181b;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.25)"></div>`,
+        iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -40]
+    })
+
+    L.marker([lat, lng], { icon }).addTo(map)
+        .bindPopup(`<div style="font-family:Inter,sans-serif;padding:4px 2px;min-width:160px">
+            <strong style="font-size:.875rem;color:#0a2222">Dr. Ricardo Silva</strong><br>
+            <span style="font-size:.78rem;color:#64748b">Av. Paulista, 1000 — São Paulo/SP</span>
+        </div>`, { maxWidth: 220 })
+        .openPopup()
+}

@@ -3,484 +3,678 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Ricardo Silva - Advocacia & Consultoria</title>
-    <meta name="description" content="Advocacia especializada com mais de 15 anos de experiência. Atendimento personalizado e resultados comprovados.">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
-    
-    <!-- Leaflet Map -->
+    <title>Dr. Ricardo Silva — Advocacia & Consultoria Jurídica</title>
+    <meta name="description" content="Escritório de advocacia especializado com mais de 15 anos de experiência. Consulta gratuita.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        teal: {
+                            50:  '#f4f4f5',
+                            100: '#e4e4e7',
+                            300: '#a1a1aa',
+                            400: '#d4d4d8',
+                            500: '#18181b',
+                            600: '#09090b',
+                            700: '#09090b',
+                            900: '#18181b',
+                            950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3kwxAonG2dorJJOy93noKNr5hJLROC.png" alt="Dr. Ricardo Silva - Logo" class="logo-image">
+<body class="font-sans antialiased text-slate-800 bg-white">
+
+
+<!-- ════════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<header class="sticky top-0 z-50 bg-teal-950 border-b border-white/[0.06]" id="header">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center h-16 gap-4">
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2.5 shrink-0">
+                <div class="w-9 h-9 rounded-lg bg-teal-500 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 2v20M5 6l7-4 7 4M4 10c0 2.2 1.8 4 4 4s4-1.8 4-4M12 10c0 2.2 1.8 4 4 4s4-1.8 4-4"/>
+                        <line x1="4" y1="10" x2="12" y2="10"/><line x1="12" y1="10" x2="20" y2="10"/>
+                        <path d="M4 22h16"/>
+                    </svg>
                 </div>
-
-                <nav class="nav-desktop">
-                    <a href="#areas" class="nav-link">Áreas de Atuação</a>
-                    <a href="#sobre" class="nav-link">Sobre</a>
-                    <a href="#depoimentos" class="nav-link">Depoimentos</a>
-                    <a href="#contato" class="nav-link">Contato</a>
-                </nav>
-
-                <div class="header-actions">
-                    <div class="phone-info">
-                        <i data-lucide="phone" class="icon-sm"></i>
-                        (11) 99999-9999
-                    </div>
-                    <button class="btn btn-primary">Consulta Gratuita</button>
+                <div>
+                    <span class="block text-white font-bold text-[0.9rem] leading-tight tracking-tight">Dr. Ricardo Silva</span>
+                    <span class="block text-white/40 text-[0.62rem] tracking-wider">OAB/SP 123.456</span>
                 </div>
+            </a>
 
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i data-lucide="menu" class="icon"></i>
-                </button>
-            </div>
-        </div>
-    </header>
+            <!-- Nav -->
+            <nav class="hidden md:flex items-center gap-5 ml-auto" aria-label="Principal">
+                <a href="#areas"       class="nav-link text-white/65 hover:text-white text-[0.84rem] font-medium transition-colors">Áreas</a>
+                <a href="#sobre"       class="nav-link text-white/65 hover:text-white text-[0.84rem] font-medium transition-colors">Sobre</a>
+                <a href="#depoimentos" class="nav-link text-white/65 hover:text-white text-[0.84rem] font-medium transition-colors">Depoimentos</a>
+                <a href="#faq"         class="nav-link text-white/65 hover:text-white text-[0.84rem] font-medium transition-colors">FAQ</a>
+                <a href="#contato"     class="nav-link text-white/65 hover:text-white text-[0.84rem] font-medium transition-colors">Contato</a>
+            </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <a href="#areas" class="mobile-nav-link">Áreas de Atuação</a>
-            <a href="#sobre" class="mobile-nav-link">Sobre</a>
-            <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
-            <a href="#contato" class="mobile-nav-link">Contato</a>
-            <button class="btn btn-primary mobile-cta">Consulta Gratuita</button>
+            <!-- CTA -->
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+               class="hidden md:inline-flex items-center gap-1.5 ml-4 px-4 py-2 bg-[#25d366] text-white text-[0.82rem] font-semibold rounded-lg hover:bg-[#1fba59] transition-colors">
+                Consulta Gratuita
+            </a>
+
+            <!-- Burger -->
+            <button id="burgerBtn" aria-label="Menu" aria-expanded="false"
+                    class="md:hidden ml-auto flex flex-col justify-center gap-[5px] p-1.5">
+                <span class="block w-5 h-[1.5px] bg-white/80 rounded"></span>
+                <span class="block w-5 h-[1.5px] bg-white/80 rounded"></span>
+                <span class="block w-5 h-[1.5px] bg-white/80 rounded"></span>
+            </button>
         </div>
     </div>
+</header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <div class="badge">
-                            ⚖️ +15 Anos de Experiência
-                        </div>
-                        <h1 class="hero-title">
-                            Rebeca linda <span class="text-primary">Gatinha carinhosa</span> e gente boa
-                        </h1>
-                        <p class="hero-description">
-                            Advocacia especializada com mais de 15 anos de experiência. Atendimento personalizado e resultados
-                            comprovados em diversas áreas do direito.
-                        </p>
+<!-- Mobile Drawer -->
+<div id="drawer" class="hidden fixed inset-0 top-16 z-40 flex-col bg-teal-950 p-6 overflow-y-auto">
+    <nav class="flex flex-col gap-1 mb-6">
+        <a href="#areas"       class="drawer-link block px-4 py-3 text-white/80 font-medium hover:text-white hover:bg-white/5 rounded-xl">Áreas de Atuação</a>
+        <a href="#sobre"       class="drawer-link block px-4 py-3 text-white/80 font-medium hover:text-white hover:bg-white/5 rounded-xl">Sobre o Advogado</a>
+        <a href="#depoimentos" class="drawer-link block px-4 py-3 text-white/80 font-medium hover:text-white hover:bg-white/5 rounded-xl">Depoimentos</a>
+        <a href="#faq"         class="drawer-link block px-4 py-3 text-white/80 font-medium hover:text-white hover:bg-white/5 rounded-xl">FAQ</a>
+        <a href="#contato"     class="drawer-link block px-4 py-3 text-white/80 font-medium hover:text-white hover:bg-white/5 rounded-xl">Contato</a>
+    </nav>
+    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+       class="flex items-center justify-center gap-2 py-3.5 bg-[#25d366] text-white font-bold rounded-xl hover:bg-[#1fba59]">
+        Consulta Gratuita
+    </a>
+</div>
 
-                        <div class="hero-actions">
-                            <button class="btn btn-primary btn-lg">
-                                <i data-lucide="message-circle" class="icon"></i>
-                                Consulta Gratuita Agora
-                            </button>
-                            <button class="btn btn-outline btn-lg">
-                                <i data-lucide="phone" class="icon"></i>
-                                (11) 99999-9999
-                            </button>
-                        </div>
 
-                        <div class="hero-stats">
-                            <div class="stat">
-                                <div class="stat-number">500+</div>
-                                <div class="stat-label">Casos Ganhos</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">98%</div>
-                                <div class="stat-label">Taxa de Sucesso</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">15+</div>
-                                <div class="stat-label">Anos de Experiência</div>
-                            </div>
-                        </div>
-                    </div>
+<main>
 
-                    <div class="hero-image">
-                        <div class="image-container">
-                            <img src="/placeholder.svg?height=500&width=400" alt="Dr. Ricardo Silva - Advogado" class="profile-image">
-                            <div class="availability-badge">
-                                <div class="status-dot"></div>
-                                <span>Disponível para consulta</span>
-                            </div>
-                        </div>
-                    </div>
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero-bg relative overflow-hidden py-28 md:py-36">
+    <div class="max-w-6xl mx-auto px-6 relative">
+        <div class="max-w-2xl">
+
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-[0.75rem] font-semibold tracking-widest uppercase mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse shrink-0"></span>
+                Escritório de Advocacia
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-black uppercase tracking-tight leading-[1.1] text-white mb-6">
+                Escritório Especializado em<br>
+                <span class="text-teal-400">Advocacia & Consultoria</span>
+            </h1>
+
+            <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+                Mais de 15 anos defendendo os direitos dos nossos clientes com dedicação, ética e resultados comprovados em diversas áreas do direito.
+            </p>
+
+            <!-- Stats row -->
+            <div class="flex flex-wrap gap-8 mb-10">
+                <div>
+                    <strong class="block text-3xl font-black text-white leading-none">500+</strong>
+                    <span class="text-white/45 text-xs font-medium tracking-wide uppercase mt-1 block">Casos ganhos</span>
+                </div>
+                <div class="w-px bg-white/10"></div>
+                <div>
+                    <strong class="block text-3xl font-black text-white leading-none">98%</strong>
+                    <span class="text-white/45 text-xs font-medium tracking-wide uppercase mt-1 block">Taxa de sucesso</span>
+                </div>
+                <div class="w-px bg-white/10"></div>
+                <div>
+                    <strong class="block text-3xl font-black text-white leading-none">15+</strong>
+                    <span class="text-white/45 text-xs font-medium tracking-wide uppercase mt-1 block">Anos de exp.</span>
                 </div>
             </div>
-        </section>
 
-        <!-- Áreas de Atuação -->
-        <section id="areas" class="areas">
-            <div class="container">
-                <div class="section-header">
-                    <div class="badge">Especialidades</div>
-                    <h2 class="section-title">Áreas de Atuação</h2>
-                    <p class="section-description">
-                        Atendimento especializado nas principais áreas do direito com foco em resultados
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-[#25d366] text-white font-bold rounded-lg hover:bg-[#1fba59] transition-colors text-sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Consulta Gratuita
+                </a>
+                <a href="tel:11999999999"
+                   class="inline-flex items-center justify-center gap-2 px-7 py-4 border border-white/25 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.77 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    (11) 99999-9999
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     ÁREAS DE ATUAÇÃO
+════════════════════════════════════════ -->
+<section id="areas" class="py-20 bg-teal-50">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <!-- Section header -->
+        <div class="text-center mb-14">
+            <p class="text-teal-500 text-xs font-bold tracking-[0.18em] uppercase mb-3">Especialidades</p>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-teal-950 mb-4">Áreas de Atuação</h2>
+            <div class="w-14 h-1 bg-teal-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
+                         alt="Direito Civil" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito Civil</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Contratos, responsabilidade civil, direito de família, sucessões e questões patrimoniais.
                     </p>
-                </div>
-
-                <div class="areas-grid">
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="gavel" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito Civil</h3>
-                        <p class="area-description">
-                            Contratos, responsabilidade civil, direito de família, sucessões e questões patrimoniais.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="users" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito Trabalhista</h3>
-                        <p class="area-description">
-                            Rescisões, horas extras, assédio moral, acidentes de trabalho e direitos do trabalhador.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="shield" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito Criminal</h3>
-                        <p class="area-description">
-                            Defesa criminal, habeas corpus, recursos e acompanhamento processual completo.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="file-text" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito Previdenciário</h3>
-                        <p class="area-description">
-                            Aposentadorias, pensões, auxílios, revisões de benefícios e recursos no INSS.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="trending-up" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito Empresarial</h3>
-                        <p class="area-description">
-                            Constituição de empresas, contratos comerciais, recuperação judicial e consultoria.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="area-card">
-                        <div class="area-icon">
-                            <i data-lucide="user-check" class="icon"></i>
-                        </div>
-                        <h3 class="area-title">Direito do Consumidor</h3>
-                        <p class="area-description">
-                            Defesa dos direitos do consumidor, indenizações e resolução de conflitos comerciais.
-                        </p>
-                        <a href="#" class="area-link">
-                            Saiba mais <i data-lucide="arrow-right" class="icon-sm"></i>
-                        </a>
-                    </div>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <!-- Sobre -->
-        <section id="sobre" class="sobre">
-            <div class="container">
-                <div class="sobre-content">
-                    <div class="sobre-text">
-                        <div class="badge">Sobre o Advogado</div>
-                        <h2 class="section-title">Dr. Ricardo Silva</h2>
-                        <p class="sobre-description">
-                            Advogado formado pela Universidade de São Paulo (USP) com mais de 15 anos de experiência.
-                            Especialista em Direito Civil e Trabalhista, com pós-graduação em Direito Processual Civil.
-                        </p>
-
-                        <div class="credentials">
-                            <div class="credential">
-                                <i data-lucide="check-circle" class="icon-check"></i>
-                                <span>OAB/SP 123.456 - Registro ativo</span>
-                            </div>
-                            <div class="credential">
-                                <i data-lucide="check-circle" class="icon-check"></i>
-                                <span>Especialização em Direito Processual Civil (PUC-SP)</span>
-                            </div>
-                            <div class="credential">
-                                <i data-lucide="check-circle" class="icon-check"></i>
-                                <span>Membro da Comissão de Direito Civil da OAB/SP</span>
-                            </div>
-                            <div class="credential">
-                                <i data-lucide="check-circle" class="icon-check"></i>
-                                <span>Palestrante em congressos jurídicos nacionais</span>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary btn-lg">
-                            <i data-lucide="message-circle" class="icon"></i>
-                            Falar com o Advogado
-                        </button>
-                    </div>
-
-                    <div class="sobre-image">
-                        <img src="/placeholder.svg?height=600&width=500" alt="Dr. Ricardo Silva" class="advogado-photo">
-                    </div>
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
+                         alt="Direito Trabalhista" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Depoimentos -->
-        <section id="depoimentos" class="depoimentos">
-            <div class="container">
-                <div class="section-header">
-                    <div class="badge">Depoimentos</div>
-                    <h2 class="section-title">O que nossos clientes dizem</h2>
-                    <p class="section-description">
-                        Resultados reais de clientes que confiaram em nosso trabalho
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito Trabalhista</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Rescisões indevidas, horas extras, assédio moral, acidentes de trabalho e direitos do trabalhador.
                     </p>
-                </div>
-
-                <div class="depoimentos-grid">
-                    <div class="depoimento-card">
-                        <div class="stars">
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                        </div>
-                        <p class="depoimento-text">
-                            "Excelente profissional! Me ajudou a resolver um problema trabalhista complexo. Consegui receber todos
-                            os meus direitos. Recomendo muito!"
-                        </p>
-                        <div class="cliente">
-                            <img src="/placeholder.svg?height=40&width=40" alt="Maria Fernanda" class="cliente-avatar">
-                            <div class="cliente-info">
-                                <div class="cliente-nome">Maria Fernanda</div>
-                                <div class="cliente-area">Direito Trabalhista</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="depoimento-card">
-                        <div class="stars">
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                        </div>
-                        <p class="depoimento-text">
-                            "Dr. Ricardo é muito competente e dedicado. Ganhou minha causa de aposentadoria que estava negada há
-                            anos. Profissional de confiança!"
-                        </p>
-                        <div class="cliente">
-                            <img src="/placeholder.svg?height=40&width=40" alt="João Santos" class="cliente-avatar">
-                            <div class="cliente-info">
-                                <div class="cliente-nome">João Santos</div>
-                                <div class="cliente-area">Direito Previdenciário</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="depoimento-card">
-                        <div class="stars">
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                            <i data-lucide="star" class="star-filled"></i>
-                        </div>
-                        <p class="depoimento-text">
-                            "Atendimento excepcional! Resolveu meu divórcio de forma rápida e justa. Sempre disponível para
-                            esclarecer dúvidas. Muito obrigada!"
-                        </p>
-                        <div class="cliente">
-                            <img src="/placeholder.svg?height=40&width=40" alt="Ana Clara" class="cliente-avatar">
-                            <div class="cliente-info">
-                                <div class="cliente-nome">Ana Clara</div>
-                                <div class="cliente-area">Direito de Família</div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <!-- Contato com Mapa -->
-        <section id="contato" class="contato">
-            <div class="container">
-                <div class="contato-content">
-                    <div class="contato-info">
-                        <div class="badge">Entre em Contato</div>
-                        <h2 class="section-title">Precisa de Ajuda Jurídica?</h2>
-                        <p class="contato-description">
-                            Entre em contato conosco e agende uma consulta gratuita. Atendimento personalizado e sigiloso.
-                        </p>
-
-                        <div class="contato-items">
-                            <div class="contato-item">
-                                <div class="contato-icon">
-                                    <i data-lucide="message-circle" class="icon"></i>
-                                </div>
-                                <div class="contato-details">
-                                    <div class="contato-label">WhatsApp</div>
-                                    <div class="contato-value">(11) 99999-9999</div>
-                                </div>
-                            </div>
-
-                            <div class="contato-item">
-                                <div class="contato-icon">
-                                    <i data-lucide="mail" class="icon"></i>
-                                </div>
-                                <div class="contato-details">
-                                    <div class="contato-label">E-mail</div>
-                                    <div class="contato-value">contato@ricardosilva.adv.br</div>
-                                </div>
-                            </div>
-
-                            <div class="contato-item">
-                                <div class="contato-icon">
-                                    <i data-lucide="map-pin" class="icon"></i>
-                                </div>
-                                <div class="contato-details">
-                                    <div class="contato-label">Endereço</div>
-                                    <div class="contato-value">Av. Paulista, 1000 - São Paulo/SP</div>
-                                </div>
-                            </div>
-
-                            <div class="contato-item">
-                                <div class="contato-icon">
-                                    <i data-lucide="clock" class="icon"></i>
-                                </div>
-                                <div class="contato-details">
-                                    <div class="contato-label">Horário</div>
-                                    <div class="contato-value">Seg-Sex: 8h às 18h</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary btn-lg">
-                            <i data-lucide="message-circle" class="icon"></i>
-                            Consulta Gratuita WhatsApp
-                        </button>
-                    </div>
-
-                    <div class="mapa-container">
-                        <div id="map" class="mapa"></div>
-                    </div>
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&q=80"
+                         alt="Direito Criminal" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3kwxAonG2dorJJOy93noKNr5hJLROC.png" alt="Dr. Ricardo Silva - Logo" class="footer-logo-image">
-                    </div>
-                    <p class="footer-description">
-                        Defendendo seus direitos com experiência, dedicação e resultados comprovados há mais de 15 anos.
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito Criminal</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Defesa criminal completa, habeas corpus, recursos e acompanhamento processual dedicado.
                     </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i data-lucide="message-circle" class="icon"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i data-lucide="linkedin" class="icon"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i data-lucide="instagram" class="icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Áreas de Atuação</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Direito Civil</a></li>
-                        <li><a href="#" class="footer-link">Direito Trabalhista</a></li>
-                        <li><a href="#" class="footer-link">Direito Criminal</a></li>
-                        <li><a href="#" class="footer-link">Direito Previdenciário</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-contacts">
-                        <li class="footer-contact">
-                            <i data-lucide="phone" class="icon-sm"></i>
-                            (11) 99999-9999
-                        </li>
-                        <li class="footer-contact">
-                            <i data-lucide="mail" class="icon-sm"></i>
-                            contato@ricardosilva.adv.br
-                        </li>
-                        <li class="footer-contact">
-                            <i data-lucide="map-pin" class="icon-sm"></i>
-                            Av. Paulista, 1000 - São Paulo/SP
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Informações</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Sobre o Advogado</a></li>
-                        <li><a href="#" class="footer-link">Blog Jurídico</a></li>
-                        <li><a href="#" class="footer-link">Perguntas Frequentes</a></li>
-                        <li><a href="#" class="footer-link">Política de Privacidade</a></li>
-                    </ul>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    © 2024 Dr. Ricardo Silva - OAB/SP 123.456. Todos os direitos reservados.
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80"
+                         alt="Direito Previdenciário" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito Previdenciário</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Aposentadorias, pensões, auxílios, revisões de benefícios e recursos no INSS.
+                    </p>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80"
+                         alt="Direito Empresarial" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito Empresarial</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Constituição de empresas, contratos comerciais, recuperação judicial e consultoria.
+                    </p>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group border border-slate-100">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
+                         alt="Direito do Consumidor" class="card-img group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-teal-950 text-[1rem] mb-2">Direito do Consumidor</h3>
+                    <p class="text-slate-500 text-[0.875rem] leading-relaxed mb-5">
+                        Defesa dos seus direitos, indenizações por danos e resolução de conflitos com empresas.
+                    </p>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 bg-[#25d366] text-white text-[0.8rem] font-semibold px-4 py-2 rounded-lg hover:bg-[#1fba59] transition-colors">
+                        Agendar Consulta
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SOBRE O ESCRITÓRIO
+════════════════════════════════════════ -->
+<section id="sobre" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Text -->
+            <div>
+                <p class="text-teal-500 text-xs font-bold tracking-[0.18em] uppercase mb-3">Quem somos</p>
+                <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-teal-950 mb-2">Sobre o Escritório</h2>
+                <div class="w-14 h-1 bg-teal-500 rounded-full mb-6"></div>
+                <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-5">
+                    O escritório Dr. Ricardo Silva foi fundado com o propósito de oferecer um atendimento jurídico de excelência, pautado pela ética, transparência e comprometimento com os resultados dos nossos clientes.
                 </p>
-                <p class="footer-dev">Desenvolvido com foco em resultados</p>
+                <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-8">
+                    Formado pela Universidade de São Paulo (USP) com mais de 15 anos de experiência, o Dr. Ricardo é especialista em Direito Civil e Trabalhista, com pós-graduação em Direito Processual Civil pela PUC-SP.
+                </p>
+
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center gap-3 text-[0.9rem] text-slate-700">
+                        <div class="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center shrink-0">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        OAB/SP 123.456 — Registro ativo
+                    </li>
+                    <li class="flex items-center gap-3 text-[0.9rem] text-slate-700">
+                        <div class="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center shrink-0">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        Pós-Graduação em Direito Processual Civil — PUC-SP
+                    </li>
+                    <li class="flex items-center gap-3 text-[0.9rem] text-slate-700">
+                        <div class="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center shrink-0">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        Membro da Comissão de Direito Civil da OAB/SP
+                    </li>
+                    <li class="flex items-center gap-3 text-[0.9rem] text-slate-700">
+                        <div class="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center shrink-0">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        Mais de 1.000 clientes atendidos
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 px-6 py-3.5 bg-[#25d366] text-white font-bold text-sm rounded-lg hover:bg-[#1fba59] transition-colors">
+                    Falar com o Dr. Ricardo
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- Photo -->
+            <div class="flex justify-center lg:justify-end">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80"
+                         alt="Dr. Ricardo Silva"
+                         class="w-full max-w-[460px] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] object-cover">
+                    <!-- Accent card -->
+                    <div class="absolute -bottom-5 -left-5 bg-teal-950 rounded-2xl px-6 py-4 shadow-xl">
+                        <strong class="block text-3xl font-black text-teal-400 leading-none">15+</strong>
+                        <span class="block text-[0.7rem] text-white/50 font-medium mt-1 tracking-wider uppercase">Anos de exp.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     DEPOIMENTOS
+════════════════════════════════════════ -->
+<section id="depoimentos" class="py-20 bg-teal-50">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+            <p class="text-teal-500 text-xs font-bold tracking-[0.18em] uppercase mb-3">Clientes</p>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-teal-950 mb-4">Depoimentos</h2>
+            <div class="w-14 h-1 bg-teal-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <div class="reveal bg-white rounded-2xl p-7 shadow-sm border border-teal-100">
+                <div class="flex gap-0.5 text-teal-500 mb-5" aria-label="5 estrelas">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="text-slate-600 text-[0.9rem] leading-relaxed italic mb-6">
+                    "Excelente profissional! Me ajudou a resolver um problema trabalhista complexo. Consegui receber todos os meus direitos. Recomendo muito!"
+                </p>
+                <div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm shrink-0">MF</div>
+                    <div>
+                        <strong class="block text-[0.875rem] font-semibold text-teal-950">Maria Fernanda</strong>
+                        <span class="text-[0.75rem] text-slate-400">Direito Trabalhista</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal bg-white rounded-2xl p-7 shadow-sm border border-teal-100">
+                <div class="flex gap-0.5 text-teal-500 mb-5" aria-label="5 estrelas">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="text-slate-600 text-[0.9rem] leading-relaxed italic mb-6">
+                    "Dr. Ricardo é muito competente e dedicado. Ganhou minha causa de aposentadoria que estava negada há anos. Profissional de total confiança!"
+                </p>
+                <div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm shrink-0">JS</div>
+                    <div>
+                        <strong class="block text-[0.875rem] font-semibold text-teal-950">João Santos</strong>
+                        <span class="text-[0.75rem] text-slate-400">Direito Previdenciário</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal bg-white rounded-2xl p-7 shadow-sm border border-teal-100">
+                <div class="flex gap-0.5 text-teal-500 mb-5" aria-label="5 estrelas">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="text-slate-600 text-[0.9rem] leading-relaxed italic mb-6">
+                    "Atendimento excepcional! Resolveu meu divórcio de forma rápida e justa. Sempre disponível para esclarecer dúvidas. Muito obrigada!"
+                </p>
+                <div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm shrink-0">AC</div>
+                    <div>
+                        <strong class="block text-[0.875rem] font-semibold text-teal-950">Ana Clara</strong>
+                        <span class="text-[0.75rem] text-slate-400">Direito de Família</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FAQ
+════════════════════════════════════════ -->
+<section id="faq" class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+            <p class="text-teal-500 text-xs font-bold tracking-[0.18em] uppercase mb-3">Dúvidas</p>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-teal-950 mb-4">FAQ</h2>
+            <div class="w-14 h-1 bg-teal-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="space-y-3" id="faqList">
+
+            <div class="faq-item border border-slate-200 rounded-xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors">
+                    <span class="font-semibold text-teal-950 text-[0.9rem]">Como funciona a primeira consulta?</span>
+                    <svg class="faq-icon w-5 h-5 text-teal-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p class="px-5 pb-5 text-slate-500 text-[0.9rem] leading-relaxed">
+                        A primeira consulta é totalmente gratuita e pode ser realizada de forma presencial no escritório ou via WhatsApp/videoconferência. Nela, avaliamos seu caso, explicamos os caminhos jurídicos disponíveis e apresentamos a melhor estratégia para o seu problema.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-slate-200 rounded-xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors">
+                    <span class="font-semibold text-teal-950 text-[0.9rem]">Quanto custa contratar um advogado?</span>
+                    <svg class="faq-icon w-5 h-5 text-teal-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p class="px-5 pb-5 text-slate-500 text-[0.9rem] leading-relaxed">
+                        Os honorários variam de acordo com a complexidade do caso e a área do direito. Em muitos casos trabalhistas e previdenciários, trabalhamos com honorários de êxito — você só paga se ganhar. Entre em contato para receber um orçamento personalizado e transparente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-slate-200 rounded-xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors">
+                    <span class="font-semibold text-teal-950 text-[0.9rem]">Quanto tempo leva um processo judicial?</span>
+                    <svg class="faq-icon w-5 h-5 text-teal-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p class="px-5 pb-5 text-slate-500 text-[0.9rem] leading-relaxed">
+                        O tempo varia muito conforme o tipo de ação e a vara responsável. Processos trabalhistas costumam durar entre 1 e 3 anos. Causas previdenciárias podem ser resolvidas entre 6 meses e 2 anos. Sempre buscamos as vias mais rápidas disponíveis para o seu caso.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-slate-200 rounded-xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors">
+                    <span class="font-semibold text-teal-950 text-[0.9rem]">Preciso ir ao escritório para ser atendido?</span>
+                    <svg class="faq-icon w-5 h-5 text-teal-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p class="px-5 pb-5 text-slate-500 text-[0.9rem] leading-relaxed">
+                        Não necessariamente. Oferecemos atendimento remoto completo via WhatsApp, e-mail e videoconferência. Todo o processo pode ser acompanhado digitalmente. Para clientes que preferem atendimento presencial, nosso escritório está localizado na Av. Paulista, 1000 — São Paulo/SP.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-slate-200 rounded-xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors">
+                    <span class="font-semibold text-teal-950 text-[0.9rem]">O atendimento é sigiloso?</span>
+                    <svg class="faq-icon w-5 h-5 text-teal-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p class="px-5 pb-5 text-slate-500 text-[0.9rem] leading-relaxed">
+                        Sim. Todo atendimento é protegido pelo sigilo profissional, garantido pelo Estatuto da OAB. Suas informações jamais serão compartilhadas com terceiros. Você pode falar com total segurança e tranquilidade.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CONTATO
+════════════════════════════════════════ -->
+<section id="contato" class="py-20 bg-teal-50">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+            <p class="text-teal-500 text-xs font-bold tracking-[0.18em] uppercase mb-3">Fale Conosco</p>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-teal-950 mb-4">Entre em Contato</h2>
+            <div class="w-14 h-1 bg-teal-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+            <!-- Info -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-teal-100">
+                <h3 class="font-bold text-teal-950 text-lg mb-6">Informações de Contato</h3>
+
+                <ul class="space-y-4">
+                    <li>
+                        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                           class="flex items-center gap-4 p-4 rounded-xl bg-teal-50 border border-teal-100 hover:border-teal-300 hover:bg-teal-100/50 transition-all group">
+                            <div class="w-11 h-11 rounded-lg bg-teal-500 flex items-center justify-center text-white shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </div>
+                            <div>
+                                <strong class="block text-[0.78rem] font-bold text-teal-950 uppercase tracking-wide">WhatsApp</strong>
+                                <span class="text-[0.875rem] text-slate-500">(11) 99999-9999</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:contato@ricardosilva.adv.br"
+                           class="flex items-center gap-4 p-4 rounded-xl bg-teal-50 border border-teal-100 hover:border-teal-300 hover:bg-teal-100/50 transition-all">
+                            <div class="w-11 h-11 rounded-lg bg-teal-500 flex items-center justify-center text-white shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <strong class="block text-[0.78rem] font-bold text-teal-950 uppercase tracking-wide">E-mail</strong>
+                                <span class="text-[0.875rem] text-slate-500">contato@ricardosilva.adv.br</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-teal-50 border border-teal-100">
+                            <div class="w-11 h-11 rounded-lg bg-teal-500 flex items-center justify-center text-white shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <strong class="block text-[0.78rem] font-bold text-teal-950 uppercase tracking-wide">Endereço</strong>
+                                <span class="text-[0.875rem] text-slate-500">Av. Paulista, 1000 — São Paulo/SP</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-teal-50 border border-teal-100">
+                            <div class="w-11 h-11 rounded-lg bg-teal-500 flex items-center justify-center text-white shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <strong class="block text-[0.78rem] font-bold text-teal-950 uppercase tracking-wide">Horário</strong>
+                                <span class="text-[0.875rem] text-slate-500">Seg–Sex: 8h às 18h</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+                   class="mt-6 flex items-center justify-center gap-2 w-full py-3.5 bg-[#25d366] text-white font-bold text-sm rounded-xl hover:bg-[#1fba59] transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar Consulta Gratuita
+                </a>
+            </div>
+
+            <!-- Map -->
+            <div class="rounded-2xl overflow-hidden shadow-sm border border-teal-100">
+                <div id="map" class="mapa"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="bg-teal-950 pt-14 pb-6">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/[0.07] mb-6">
+
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-2.5 mb-4">
+                    <div class="w-9 h-9 rounded-lg bg-teal-500 flex items-center justify-center shrink-0">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 2v20M5 6l7-4 7 4M4 10c0 2.2 1.8 4 4 4s4-1.8 4-4M12 10c0 2.2 1.8 4 4 4s4-1.8 4-4"/>
+                            <line x1="4" y1="10" x2="12" y2="10"/><line x1="12" y1="10" x2="20" y2="10"/>
+                            <path d="M4 22h16"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong class="block text-white font-bold text-[0.9rem] leading-snug">Dr. Ricardo Silva</strong>
+                        <small class="text-white/35 text-[0.62rem] tracking-wide">OAB/SP 123.456</small>
+                    </div>
+                </div>
+                <p class="text-white/45 text-[0.85rem] leading-relaxed max-w-xs">
+                    Defendendo seus direitos com experiência, dedicação e resultados comprovados há mais de 15 anos.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white/35 text-[0.7rem] font-bold tracking-[0.14em] uppercase mb-4">Áreas</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-white/50 text-[0.83rem] hover:text-teal-400 transition-colors">Direito Civil</a></li>
+                    <li><a href="#" class="text-white/50 text-[0.83rem] hover:text-teal-400 transition-colors">Direito Trabalhista</a></li>
+                    <li><a href="#" class="text-white/50 text-[0.83rem] hover:text-teal-400 transition-colors">Direito Criminal</a></li>
+                    <li><a href="#" class="text-white/50 text-[0.83rem] hover:text-teal-400 transition-colors">Direito Previdenciário</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white/35 text-[0.7rem] font-bold tracking-[0.14em] uppercase mb-4">Contato</h4>
+                <ul class="space-y-2">
+                    <li class="text-white/50 text-[0.83rem]">(11) 99999-9999</li>
+                    <li class="text-white/50 text-[0.83rem]">contato@ricardosilva.adv.br</li>
+                    <li class="text-white/50 text-[0.83rem]">Av. Paulista, 1000 — SP</li>
+                    <li class="text-white/50 text-[0.83rem]">Seg–Sex: 8h às 18h</li>
+                </ul>
             </div>
         </div>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <div class="whatsapp-float">
-        <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-btn">
-            <i data-lucide="message-circle" class="icon"></i>
-        </a>
+        <p class="text-white/25 text-[0.75rem]">© 2024 Dr. Ricardo Silva — OAB/SP 123.456. Todos os direitos reservados.</p>
     </div>
+</footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5511999999999" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25d366] flex items-center justify-center
+          shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:bg-[#1fba59] hover:scale-110 transition-all duration-200">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
