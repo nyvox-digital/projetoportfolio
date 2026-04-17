@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Script de Proteção contra Cópia e Print
+// Reutilizável em todas as galerias de criativos
+
+function initializeContentProtection() {
     function showBlockedActionAlert() {
         alert('⛔ Ação bloqueada! Este conteúdo está protegido contra cópia e download.');
     }
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bloquear atalhos de teclado perigosos
     document.addEventListener('keydown', (e) => {
-        // F12 (DevTools), Ctrl+Shift+I, Ctrl+Shift+C (Inspetor), Ctrl+C (Cópia)
+        // F12 (DevTools), Ctrl+Shift+I, Ctrl+Shift+C (Inspetor), Ctrl+C (Cópia), Ctrl+P (Print)
         if (e.key === 'F12' ||
             (e.ctrlKey && e.shiftKey && ['i', 'c'].includes(e.key.toLowerCase())) ||
             (e.ctrlKey && ['c', 'u', 's', 'p'].includes(e.key.toLowerCase()))) {
@@ -60,15 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.textContent = `
         @media print {
-            body { display: none; }
+            body { display: none !important; }
         }
         img {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            pointer-events: none !important;
         }
     `;
     document.head.appendChild(style);
-});
+}
+
+// Executar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', initializeContentProtection);
