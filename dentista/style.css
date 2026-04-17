@@ -54,11 +54,11 @@ main { padding: 0 20px 80px 20px; }
     aspect-ratio: 4 / 5; 
 }
 
-.creative-wrapper { position: relative; width: 100%; height: 100%; }
+.creative-wrapper { position: relative; width: 100%; height: 100%; background-color: #fff; display: flex; align-items: center; justify-content: center; }
 .creative-wrapper img, .creative-wrapper video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     display: block;
 }
 
