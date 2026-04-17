@@ -31,6 +31,10 @@ section { padding: 100px 0; }
     display: flex;
     align-items: center;
     justify-content: center; /* Centraliza o .hero-content horizontalmente */
+    background-image: url('./assets/imagens/capa.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     background-color: var(--background-color); /* Fallback para caso o JS falhe */
 }
 
