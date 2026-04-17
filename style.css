@@ -26,11 +26,15 @@ section { padding: 100px 0; }
 #hero {
     position: relative; /* Essencial para posicionar a animação dentro dele */
     overflow: hidden; /* Garante que a animação não vaze para fora */
-    height: 90vh; 
+    height: 90vh;
     min-height: 700px; /* Aumentei um pouco para dar mais espaço à animação */
     display: flex;
     align-items: center;
     justify-content: center; /* Centraliza o .hero-content horizontalmente */
+    background-image: url('../assets/imagens/capa.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     background-color: var(--background-color); /* Fallback para caso o JS falhe */
 }
 

@@ -85,7 +85,11 @@
   /* ─── HERO ─── */
   #hero {
     min-height: 100vh;
-    background: var(--navy);
+    background-image: url('../../assets/imagens/capa.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: var(--navy);
     position: relative;
     overflow: hidden;
     display: flex; align-items: center;
