@@ -1,51 +1,70 @@
-// Toggle FAQ items
-function toggleFaq(button) {
-  const faqItem = button.parentElement
-  const isActive = faqItem.classList.contains("active")
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-  // Close all other open FAQ items
-  document.querySelectorAll(".faq-item.active").forEach((item) => {
-    if (item !== faqItem) {
-      item.classList.remove("active")
-    }
-  })
-
-  // Toggle current item
-  if (isActive) {
-    faqItem.classList.remove("active")
-  } else {
-    faqItem.classList.add("active")
-  }
-}
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    }
-  })
-})
-
-// Close FAQ when clicking outside
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".faq-item")) {
-    document.querySelectorAll(".faq-item.active").forEach((item) => {
-      if (!e.target.closest(".faq-header")) {
-        item.classList.remove("active")
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
       }
-    })
-  }
-})
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
 
-// Add button click handlers
-document.querySelectorAll(".btn-primary, .btn-outline").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    alert("Entre em contato para agendar sua sessão!\nWhatsApp: (11) 98765-4321\nEmail: marina@email.com")
-  })
-})
+  // Stats animation
+  const statCards = document.querySelectorAll('.stat-card');
+  setTimeout(() => {
+    statCards.forEach((card, i) => {
+      setTimeout(() => card.classList.add('visible'), 800 + i * 200);
+    });
+  }, 400);
+
+  // Counter animation
+  function animateCounter(el, target, suffix = '') {
+    const isPercent = suffix === '%';
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = (isPercent ? Math.floor(current) : Math.floor(current).toLocaleString('pt-BR')) + suffix;
+    }, 16);
+  }
+
+  const metricObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.sobre-metric-n, .stat-num');
+        nums.forEach(num => {
+          const text = num.textContent;
+          if (text.includes('%')) animateCounter(num, parseInt(text), '%');
+          else if (text.includes('+')) {
+            const val = parseInt(text.replace(/\D/g, ''));
+            animateCounter(num, val, '+');
+          }
+        });
+        metricObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('#sobre, #hero').forEach(el => metricObserver.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
