@@ -136,6 +136,8 @@ section { padding: 100px 0; }
 .service-slider .swiper-slide { display: flex; justify-content: center; align-items: center; }
 .portfolio-card { width: 100%; background-color: var(--card-background); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
 .portfolio-card img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
+.portfolio-card.story-card img { aspect-ratio: 9 / 16; }
+.portfolio-card.lp-card img { aspect-ratio: 2 / 3; }
 .swiper-pagination-bullet { background: var(--swiper-pagination-bullet-inactive-color); width: 10px; height: 10px; opacity: 0.8; }
 .swiper-pagination-bullet-active { background: var(--swiper-theme-color); }
 
