@@ -37,9 +37,9 @@ header p { font-size: 1.1rem; opacity: 0.8; }
 main { padding: 0 20px 80px 20px; }
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
-    max-width: 1400px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
