@@ -96,6 +96,15 @@
     padding: 120px 6% 80px;
   }
 
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.65);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .hero-bg-grid {
     position: absolute; inset: 0;
     background-image:
@@ -103,6 +112,7 @@
       linear-gradient(90deg, rgba(200,212,224,0.04) 1px, transparent 1px);
     background-size: 80px 80px;
     pointer-events: none;
+    z-index: 2;
   }
 
   .hero-orb-1 {
