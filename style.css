@@ -32,8 +32,9 @@ section { padding: 100px 0; }
     align-items: center;
     justify-content: center; /* Centraliza o .hero-content horizontalmente */
     background-image: url('./assets/imagens/capa.png');
-    background-size: cover;
-    background-position: center;
+    background-size: 60%;
+    background-position: right center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: var(--background-color); /* Fallback para caso o JS falhe */
 }
@@ -426,6 +427,11 @@ section { padding: 100px 0; }
 
 @media (max-width: 768px) {
     section { padding: 80px 0; }
+    #hero {
+        background-image: url('./assets/imagens/capa-mobile.png');
+        background-size: 100%;
+        background-position: center;
+    }
     #hero h1 { font-size: 2.8rem; }
     #hero h2 { font-size: 1.2rem; }
     .section-title, .category-title { font-size: 1.8rem; }
