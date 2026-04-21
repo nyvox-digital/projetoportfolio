@@ -31,11 +31,7 @@ section { padding: 100px 0; }
     display: flex;
     align-items: center;
     justify-content: center; /* Centraliza o .hero-content horizontalmente */
-    background-image: url('./assets/imagens/capa.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-color: var(--background-color); /* Fallback para caso o JS falhe */
+    background-color: var(--background-color);
 }
 
 /* Overlay escuro no hero */
@@ -46,7 +42,7 @@ section { padding: 100px 0; }
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: radial-gradient(ellipse at center, rgba(157,78,221,0.08) 0%, transparent 70%);
     z-index: 1;
     pointer-events: none;
 }

@@ -15,10 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- NOVO: Scripts para React e Babel (para rodar JSX no navegador) -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
@@ -398,14 +394,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 
-     <script type="text/babel" src="BrainCanvas.js"></script>
-    
-    <!-- NOVO: Renderiza o componente React dentro do #brain-container -->
-    <script type="text/babel">
-        const container = document.getElementById('brain-container');
-        const root = ReactDOM.createRoot(container);
-        root.render(<BrainCanvas />);
-    </script>
+    <script src="particles.js"></script>
     
 
 </body>
