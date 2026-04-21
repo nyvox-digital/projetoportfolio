@@ -1,70 +1,67 @@
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
+// ── NAV scroll effect
+const nb = document.getElementById('navbar');
+window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 50));
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+// ── Hamburger / mobile menu
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobile-menu');
+hb.addEventListener('click', () => {
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
+  document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  hb.classList.remove('open');
+  mm.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-  // Stats animation
-  const statCards = document.querySelectorAll('.stat-card');
-  setTimeout(() => {
-    statCards.forEach((card, i) => {
-      setTimeout(() => card.classList.add('visible'), 800 + i * 200);
-    });
-  }, 400);
+// ── Scroll reveal
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// Hero reveals immediately
+setTimeout(() => {
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+}, 80);
 
-  // Counter animation
-  function animateCounter(el, target, suffix = '') {
-    const isPercent = suffix === '%';
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      el.textContent = (isPercent ? Math.floor(current) : Math.floor(current).toLocaleString('pt-BR')) + suffix;
-    }, 16);
-  }
+// ── Carousel (depoimentos)
+const track  = document.getElementById('carTrack');
+const slides = track.querySelectorAll('.tslide');
+const dotsC  = document.getElementById('cDots');
+let cur = 0, timer;
 
-  const metricObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const nums = entry.target.querySelectorAll('.sobre-metric-n, .stat-num');
-        nums.forEach(num => {
-          const text = num.textContent;
-          if (text.includes('%')) animateCounter(num, parseInt(text), '%');
-          else if (text.includes('+')) {
-            const val = parseInt(text.replace(/\D/g, ''));
-            animateCounter(num, val, '+');
-          }
-        });
-        metricObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
+// Build dots
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'c-dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => goTo(i));
+  dotsC.appendChild(d);
+});
 
-  document.querySelectorAll('#sobre, #hero').forEach(el => metricObserver.observe(el));
+function goTo(n) {
+  cur = (n + slides.length) % slides.length;
+  track.style.transform = `translateX(-${cur * 100}%)`;
+  dotsC.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  resetTimer();
+}
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+function resetTimer() {
+  clearInterval(timer);
+  timer = setInterval(() => goTo(cur + 1), 4500);
+}
+
+document.getElementById('cPrev').addEventListener('click', () => goTo(cur - 1));
+document.getElementById('cNext').addEventListener('click', () => goTo(cur + 1));
+
+// Touch swipe support
+let tx = 0;
+track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+track.addEventListener('touchend',   e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) goTo(dx > 0 ? cur + 1 : cur - 1);
+});
+
+resetTimer();

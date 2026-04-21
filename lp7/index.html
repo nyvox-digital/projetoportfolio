@@ -1,218 +1,284 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Marina Silva - Terapeuta de Ansiedade e Depressão</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dra. Ana Beatriz · Psicóloga Clínica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <div class="logo-icon">🌿</div>
-                <span>Marina Silva</span>
-            </div>
-            <div class="nav-menu">
-                <a href="#sobre" class="nav-link">Sobre</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#depoimentos" class="nav-link">Depoimentos</a>
-                <a href="#contato" class="nav-link">Contato</a>
-            </div>
-            <button class="btn btn-primary">Agendar</button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Seu caminho para a <span class="highlight">transformação</span></h1>
-            <p class="hero-subtitle">Um espaço acolhedor e seguro onde você pode explorar seus sentimentos, compreender a ansiedade e a depressão, e construir uma vida mais plena.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Marcar Consulta</button>
-                <button class="btn btn-outline">Conhecer Minha Abordagem</button>
-            </div>
-        </div>
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <a href="#hero" onclick="closeMenu()">Início</a>
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#depoimentos" onclick="closeMenu()">Depoimentos</a>
+  <a href="https://wa.me/5511999999999" target="_blank" class="mm-cta" onclick="closeMenu()">WhatsApp</a>
+</div>
 
-        <div class="hero-decoration">
-            <div class="decoration-box">
-                <span class="decoration-icon">❤️</span>
-                <p>Imagem representativa do acolhimento terapêutico</p>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Dra. Ana Beatriz</a>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="https://wa.me/5511999999999" target="_blank" class="wa-btn" style="padding:10px 20px;font-size:13px;animation:none;">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <button id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
 
-    <!-- Sobre -->
-    <section id="sobre" class="section about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Bem-vindo ao meu consultório</h2>
-                    <p>Sou psicóloga formada com 8 anos de experiência em terapia cognitivo-comportamental, especializada em transtornos de ansiedade e depressão.</p>
-                    <p>Acredito que cada pessoa é única, e por isso ofereço um atendimento personalizado, com escuta ativa e abordagem centrada em você.</p>
-                    <div class="checklist">
-                        <div class="check-item">
-                            <span class="check-icon">✓</span>
-                            <span>Escuta atenta e sem julgamentos</span>
-                        </div>
-                        <div class="check-item">
-                            <span class="check-icon">✓</span>
-                            <span>Abordagem científica e comprovada</span>
-                        </div>
-                        <div class="check-item">
-                            <span class="check-icon">✓</span>
-                            <span>Ambiente seguro e confidencial</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <span class="about-image-icon">🌿</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ══ 1. CAPA ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco"></div>
 
-    <!-- Serviços -->
-    <section id="servicos" class="section services">
-        <div class="container">
-            <h2 class="section-title">Meus Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-icon">💬</span>
-                    <h3>Terapia Individual</h3>
-                    <p>Sessões personalizadas focadas em suas necessidades específicas</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">❤️</span>
-                    <h3>Gestão de Ansiedade</h3>
-                    <p>Técnicas eficazes para compreender e controlar a ansiedade</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🌿</span>
-                    <h3>Tratamento de Depressão</h3>
-                    <p>Abordagem humanizada para recuperar esperança e bem-estar</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-content">
+    <h1 class="hero-title reveal">
+      Cuidado que<br><span>transforma</span><br>vidas.
+    </h1>
 
-    <!-- Depoimentos -->
-    <section id="depoimentos" class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">O que meus pacientes dizem</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"Encontrei em Marina um acolhimento que eu precisava. Seu espaço é realmente seguro e ela me ajudou a compreender minha ansiedade de forma nunca vista."</p>
-                    <p class="testimonial-author">— Carla M.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Após meses de depressão, comecei a sentir melhoras reais. A abordagem dela é prática e compassiva."</p>
-                    <p class="testimonial-author">— João P.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Recomendo Marina para qualquer pessoa que está buscando terapia de qualidade e um atendimento humanizado."</p>
-                    <p class="testimonial-author">— Sofia L.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Finalmente consegui ferramentas para lidar com minha ansiedade. Agradeço por toda a paciência e profissionalismo."</p>
-                    <p class="testimonial-author">— Lucas T.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <p class="hero-subtitle reveal">Sua saúde mental merece atenção especializada.</p>
 
-    <!-- FAQ -->
-    <section class="section faq">
-        <div class="container">
-            <h2 class="section-title">Dúvidas Frequentes</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>Como são as sessões?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-content">
-                        <p>As sessões têm duração de 50 minutos e acontecem em um ambiente aconchegante. Utilizamos abordagens baseadas em evidências como TCC.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>Qual é o valor das consultas?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-content">
-                        <p>Os valores variam conforme o tipo de atendimento. Oferecemos opções acessíveis e aceitamos alguns convênios. Converse comigo sobre as possibilidades.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>Preciso de encaminhamento médico?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-content">
-                        <p>Não é obrigatório, mas é recomendado ter acompanhamento médico. Posso trabalhar em conjunto com seu médico psiquiatra.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>Qual é o prazo para começar a sentir melhoras?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-content">
-                        <p>Cada pessoa é única, mas muitos pacientes relatam melhorias significativas já nas primeiras semanas. Consistência é fundamental.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <p class="hero-desc reveal">
+      Atendimento psicológico individual, de casal e online. Em um ambiente seguro, acolhedor e profissional para você se reconectar com quem você é de verdade.
+    </p>
 
-    <!-- CTA Section -->
-    <section id="contato" class="section cta">
-        <div class="container">
-            <h2>Pronto para começar sua jornada?</h2>
-            <p>Entre em contato comigo e agende sua primeira sessão.</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary">📅 Agendar Consulta</button>
-                <button class="btn btn-outline">(11) 98765-4321</button>
-            </div>
-        </div>
-    </section>
+    <div class="reveal">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="wa-btn" style="font-size:16px;">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <span>🌿</span>
-                        <span class="footer-name">Marina Silva</span>
-                    </div>
-                    <p>Psicóloga CRP 06/123456</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li>📧 marina@email.com</li>
-                        <li>📱 (11) 98765-4321</li>
-                        <li>📍 São Paulo, SP</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Dra. Marina Silva. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+<!-- ══ 2. SERVIÇOS ══ -->
+<section id="servicos">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-tag">O que ofereço</div>
+      <h2 class="section-h2">Serviços especializados<br>para o seu bem-estar</h2>
+      <p class="section-sub">Cada serviço é pensado para acolher sua necessidade com profissionalismo, ética e cuidado genuíno.</p>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="services-grid">
+
+      <div class="sc reveal" style="transition-delay:.04s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="sc-title">Psicoterapia Individual</div>
+        <p class="sc-desc">Sessões focadas em você — para tratar ansiedade, depressão, traumas, autoestima e muito mais, com técnicas baseadas em evidências.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Psicoterapia%20Individual" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.08s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="sc-title">Terapia de Casal</div>
+        <p class="sc-desc">Reconstrua a comunicação, intimidade e cumplicidade. Sessões para casais que querem fortalecer o vínculo ou atravessar crises juntos.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Terapia%20de%20Casal" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.12s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="sc-title">Psicoterapia Online</div>
+        <p class="sc-desc">Toda a qualidade do atendimento presencial com a praticidade de fazer de onde você estiver. Disponível para todo o Brasil e exterior.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Atendimento%20Online" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.16s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.49 12 19.79 19.79 0 01.46 3.39 2 2 0 012.45 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.45A16 16 0 0015.54 17l.76-.78a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="sc-title">Avaliação Psicológica</div>
+        <p class="sc-desc">Laudos e pareceres psicológicos para fins clínicos, jurídicos ou ocupacionais, realizados com rigor técnico conforme as normas do CFP.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Avaliação%20Psicológica" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.20s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="sc-title">Ansiedade e Depressão</div>
+        <p class="sc-desc">Tratamento especializado com TCC para transtornos de ansiedade, depressão, síndrome do pânico e fobias — resultados comprovados.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Ansiedade%20e%20Depressão" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.24s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="sc-title">Burnout e Estresse</div>
+        <p class="sc-desc">Apoio psicológico para quem está esgotado emocionalmente. Identificamos as causas e reconstruímos o equilíbrio na sua vida.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Burnout" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.28s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="sc-title">Luto e Perdas</div>
+        <p class="sc-desc">Suporte para processar a dor da perda com segurança e compaixão — seja de pessoas, relacionamentos, empregos ou fases da vida.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Luto%20e%20Perdas" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.32s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+        <div class="sc-title">Autoconhecimento</div>
+        <p class="sc-desc">Jornada terapêutica para entender melhor suas emoções, comportamentos, padrões relacionais e encontrar mais propósito de vida.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Autoconhecimento" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+      <div class="sc reveal" style="transition-delay:.36s">
+        <div class="sc-icon"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="sc-title">Saúde Mental no Trabalho</div>
+        <p class="sc-desc">Conflitos profissionais, síndrome do impostor, pressão, medo de falhar — cuidado psicológico para você se sentir bem também no trabalho.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20Saúde%20Mental%20no%20Trabalho" target="_blank" class="sc-wa"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>Entrar em contato</a>
+      </div>
+
+    </div>
+
+    <div class="servicos-cta reveal">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços" target="_blank" class="wa-btn" style="font-size:16px;">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Falar com a psicóloga agora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. SOBRE ══ -->
+<section id="sobre">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;margin-bottom:4px;">
+      <div class="section-tag" style="justify-content:center;color:var(--gold2);">
+        <span style="width:24px;height:2px;background:var(--gold2);border-radius:2px;display:inline-block;"></span>
+        Sobre mim
+      </div>
+    </div>
+
+    <div class="sobre-inner reveal">
+      <div class="sobre-photo-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face&auto=format&q=80"
+          alt="Dra. Ana Beatriz — Psicóloga Clínica"
+          class="sobre-photo"
+          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face&auto=format&q=80';"
+        />
+        <div class="sobre-photo-badge">
+          <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+      </div>
+
+      <h2 class="sobre-name">Dra. Ana Beatriz Souza</h2>
+      <div class="sobre-crp">CRP 06/000000 · Psicóloga Clínica</div>
+
+      <p class="sobre-text">
+        Sou psicóloga clínica com 10 anos de experiência no acompanhamento de adultos e casais. Minha atuação é fundamentada na Terapia Cognitivo-Comportamental (TCC), uma das abordagens mais eficazes do mundo para tratamento de ansiedade, depressão, fobias e problemas de relacionamento.
+        <br><br>
+        Acredito que cada pessoa tem potencial de transformação. Meu papel é criar um espaço seguro, sem julgamentos, onde você possa se conhecer mais fundo e construir uma vida mais leve, significativa e alinhada com o que você realmente quer ser.
+      </p>
+
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="wa-btn" style="font-size:16px;">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Entrar em contato
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. DEPOIMENTOS ══ -->
+<section id="depoimentos">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Depoimentos</div>
+      <h2 class="section-h2" style="text-align:center;">Histórias de transformação</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center;">Cada depoimento é uma vida que decidiu dar um passo em direção ao bem-estar.</p>
+    </div>
+
+    <div class="carousel-wrap reveal">
+      <div class="carousel-track" id="carTrack">
+
+        <div class="tslide"><div class="tcard">
+          <div class="tstar"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="tquote">"A terapia com a Dra. Ana Beatriz mudou completamente a minha vida. Cheguei no fundo do poço com ansiedade e hoje consigo lidar com tudo de forma muito mais tranquila. É um investimento que vale cada centavo."</p>
+          <div class="tname">Mariana Costa</div>
+          <div class="trole">Paciente há 2 anos · Psicoterapia Individual</div>
+        </div></div>
+
+        <div class="tslide"><div class="tcard">
+          <div class="tstar"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="tquote">"Eu e meu marido estávamos quase separando. A terapia de casal foi o que salvou nosso casamento. A Dra. Ana Beatriz conduziu tudo com muita sensibilidade e profissionalismo. Hoje somos muito mais unidos."</p>
+          <div class="tname">Renata e Carlos Silva</div>
+          <div class="trole">Terapia de Casal · 8 meses de acompanhamento</div>
+        </div></div>
+
+        <div class="tslide"><div class="tcard">
+          <div class="tstar"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="tquote">"O atendimento online foi uma surpresa muito positiva. Moro em outro estado e achei que perderia qualidade — pelo contrário! A Dra. Ana me acolheu desde a primeira sessão. Recomendo de coração."</p>
+          <div class="tname">Fernanda Alves</div>
+          <div class="trole">Psicoterapia Online · Recife-PE</div>
+        </div></div>
+
+        <div class="tslide"><div class="tcard">
+          <div class="tstar"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="tquote">"Estava em burnout total, mal conseguia sair da cama. Em 4 meses de terapia já era outro ser humano. A Dra. Ana não só me ajudou a me recuperar — me ensinou a viver de forma mais equilibrada."</p>
+          <div class="tname">Ricardo Monteiro</div>
+          <div class="trole">Tratamento de Burnout · 1 ano de acompanhamento</div>
+        </div></div>
+
+      </div>
+
+      <div class="carousel-ctrl">
+        <button class="c-btn" id="cPrev"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="c-dots" id="cDots"></div>
+        <button class="c-btn" id="cNext"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. RODAPÉ ══ -->
+<footer>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Dra. Ana Beatriz</div>
+        <p class="footer-desc">Psicóloga Clínica especializada em TCC. Atendimento presencial em São Paulo e online para todo o Brasil e exterior.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <a href="#servicos" class="flink">Psicoterapia Individual</a>
+        <a href="#servicos" class="flink">Terapia de Casal</a>
+        <a href="#servicos" class="flink">Atendimento Online</a>
+        <a href="#servicos" class="flink">Avaliação Psicológica</a>
+        <a href="#servicos" class="flink">Ansiedade e Depressão</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Links rápidos</div>
+        <a href="#hero" class="flink">Início</a>
+        <a href="#servicos" class="flink">Serviços</a>
+        <a href="#sobre" class="flink">Sobre mim</a>
+        <a href="#depoimentos" class="flink">Depoimentos</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Entre em contato</div>
+        <div class="fcontact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Pinheiros, São Paulo – SP</div>
+        <div class="fcontact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.49 12 19.79 19.79 0 01.46 3.39 2 2 0 012.45 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.45A16 16 0 0015.54 17l.76-.78a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(11) 99999-0000</div>
+        <div class="fcontact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>contato@dranabeatriz.com.br</div>
+        <div class="fcontact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seg–Sex: 8h às 20h</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© Dra. Ana Beatriz Souza · Todos os direitos reservados</div>
+      <div class="footer-crp">CRP 06/000000</div>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WhatsApp -->
+<a id="wa-fab" href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta" target="_blank" aria-label="WhatsApp">
+  <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script src="script.js"></script>
 </body>
 </html>
