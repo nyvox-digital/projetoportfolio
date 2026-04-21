@@ -151,7 +151,7 @@ section { padding: 100px 0; }
 .portfolio-card img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
 .portfolio-card.story-card img { aspect-ratio: 9 / 16; }
 .portfolio-card.lp-card { background-color: transparent; }
-.portfolio-card.lp-card img { aspect-ratio: 9 / 16; object-fit: cover; }
+.portfolio-card.lp-card img { aspect-ratio: unset; height: auto; object-fit: unset; }
 .swiper-pagination-bullet { background: var(--swiper-pagination-bullet-inactive-color); width: 10px; height: 10px; opacity: 0.8; }
 .swiper-pagination-bullet-active { background: var(--swiper-theme-color); }
 
