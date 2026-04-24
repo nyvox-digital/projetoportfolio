@@ -57,7 +57,7 @@ body {
   background-image: url('https://images.unsplash.com/photo-1609587312208-cea54be969e7?w=1600&q=80');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.12);
+  filter: brightness(0.3);
   transform: scale(1.05);
   animation: zoomOut 8s ease forwards;
 }
