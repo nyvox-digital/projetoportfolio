@@ -272,7 +272,9 @@ section { padding: 100px 0; }
 .testimonial-card blockquote { font-size: 1.2rem; font-style: italic; color: #e0e0e0; line-height: 1.6; border-left: 3px solid var(--primary-color); padding-left: 20px; margin-bottom: 30px; position: relative; }
 .testimonial-author { font-weight: 600; font-size: 1.1rem; color: var(--text-color); }
 .testimonial-author span { display: block; font-weight: 400; font-size: 0.9rem; color: #aaa; margin-top: 5px; }
-.testimonial-audio { display: block; width: 100%; min-height: 54px; margin-bottom: 30px; border-radius: 8px; filter: invert(1) hue-rotate(180deg); -webkit-appearance: none; appearance: none; }
+.audio-label { font-size: 0.95rem; color: var(--primary-color); font-weight: 600; margin-bottom: 12px; letter-spacing: 0.5px; }
+.audio-label i { margin-right: 6px; }
+.testimonial-audio { display: block; width: 100%; min-height: 54px; margin-bottom: 30px; border-radius: 8px; }
 
 /* --- SEÇÃO DE FAQ --- */
 #faq { background-color: var(--background-color); }
