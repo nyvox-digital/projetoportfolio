@@ -253,8 +253,8 @@ section { padding: 90px 20px; }
 }
 .stat-label { font-size: 13px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
 .about-photo {
-  flex: 0 0 320px;
-  max-width: 100%;
+  flex: 0 0 200px;
+  max-width: 200px;
 }
 .about-photo img {
   width: 100%;
