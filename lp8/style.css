@@ -29,13 +29,12 @@ body {
   z-index: 9999;
   background: var(--green-wa);
   color: white;
-  border-radius: 50px;
-  padding: 14px 22px;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 15px;
+  justify-content: center;
   text-decoration: none;
   animation: ripple-wa 2s infinite;
   transition: transform 0.2s;
@@ -55,10 +54,10 @@ body {
 }
 #hero .bg {
   position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');
+  background-image: url('https://images.unsplash.com/photo-1609587312208-cea54be969e7?w=1600&q=80');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.22);
+  filter: brightness(0.12);
   transform: scale(1.05);
   animation: zoomOut 8s ease forwards;
 }
@@ -225,9 +224,10 @@ section { padding: 90px 20px; }
 #about { background: var(--dark); }
 .about-wrap {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 70px;
-  flex-wrap: wrap;
+  gap: 40px;
+  text-align: center;
 }
 .about-text { flex: 1; min-width: 280px; }
 .about-text .section-title { margin-bottom: 20px; }
