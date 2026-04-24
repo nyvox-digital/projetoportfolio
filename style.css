@@ -274,7 +274,12 @@ section { padding: 100px 0; }
 .testimonial-author span { display: block; font-weight: 400; font-size: 0.9rem; color: #aaa; margin-top: 5px; }
 .audio-label { font-size: 0.95rem; color: var(--primary-color); font-weight: 600; margin-bottom: 12px; letter-spacing: 0.5px; }
 .audio-label i { margin-right: 6px; }
-.testimonial-audio { display: block; width: 100%; min-height: 54px; margin-bottom: 30px; border-radius: 8px; }
+.custom-audio-player { display: flex; align-items: center; gap: 14px; background: #1a1a1a; border-radius: 50px; padding: 10px 16px; margin-bottom: 30px; }
+.audio-play-btn { background: var(--primary-color); border: none; border-radius: 50%; width: 40px; height: 40px; min-width: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 14px; }
+.audio-progress-wrap { flex: 1; }
+.audio-progress-bar { height: 4px; background: #444; border-radius: 2px; cursor: pointer; margin-bottom: 6px; position: relative; }
+.audio-progress-fill { height: 100%; background: var(--primary-color); border-radius: 2px; width: 0%; }
+.audio-time { display: flex; justify-content: space-between; font-size: 0.75rem; color: #aaa; }
 
 /* --- SEÇÃO DE FAQ --- */
 #faq { background-color: var(--background-color); }

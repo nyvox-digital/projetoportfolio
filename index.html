@@ -287,10 +287,23 @@
                         <div class="swiper-slide">
                             <div class="testimonial-card">
                                 <p class="audio-label"><i class="fas fa-headphones"></i> Ouça o depoimento</p>
-                                <audio class="testimonial-audio" controls preload="metadata">
-                                    <source src="assets/depoimento.m4a" type="audio/mp4">
-                                    Seu navegador não suporta o player de áudio.
-                                </audio>
+                                <div class="custom-audio-player">
+                                    <audio class="testimonial-audio" preload="metadata">
+                                        <source src="assets/depoimento.m4a" type="audio/mp4">
+                                    </audio>
+                                    <button class="audio-play-btn" aria-label="Play">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <div class="audio-progress-wrap">
+                                        <div class="audio-progress-bar">
+                                            <div class="audio-progress-fill"></div>
+                                        </div>
+                                        <div class="audio-time">
+                                            <span class="audio-current">0:00</span>
+                                            <span class="audio-duration">0:47</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <p class="testimonial-author">Murilo Gonçalves <span>Edição de Vídeo - Landing Page
 
                                     

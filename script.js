@@ -46,20 +46,59 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // --- TRAVA O CARROSSEL DE DEPOIMENTOS ENQUANTO O ÁUDIO TOCA ---
-    const testimonialAudio = document.querySelector('.testimonial-audio');
-    if (testimonialAudio) {
-        testimonialAudio.addEventListener('play', () => {
-            testimonialSwiper.autoplay.stop();
-            testimonialSwiper.allowTouchMove = false;
+    // --- PLAYER DE ÁUDIO CUSTOMIZADO ---
+    const audioPlayer = document.querySelector('.custom-audio-player');
+    if (audioPlayer) {
+        const audio = audioPlayer.querySelector('.testimonial-audio');
+        const playBtn = audioPlayer.querySelector('.audio-play-btn');
+        const playIcon = playBtn.querySelector('i');
+        const progressFill = audioPlayer.querySelector('.audio-progress-fill');
+        const progressBar = audioPlayer.querySelector('.audio-progress-bar');
+        const currentTimeEl = audioPlayer.querySelector('.audio-current');
+        const durationEl = audioPlayer.querySelector('.audio-duration');
+
+        const fmt = (t) => {
+            const m = Math.floor(t / 60);
+            const s = Math.floor(t % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+        };
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = fmt(audio.duration);
         });
-        testimonialAudio.addEventListener('pause', () => {
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.className = 'fas fa-pause';
+                testimonialSwiper.autoplay.stop();
+                testimonialSwiper.allowTouchMove = false;
+            } else {
+                audio.pause();
+                playIcon.className = 'fas fa-play';
+                testimonialSwiper.autoplay.start();
+                testimonialSwiper.allowTouchMove = true;
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const pct = (audio.currentTime / audio.duration) * 100 || 0;
+            progressFill.style.width = pct + '%';
+            currentTimeEl.textContent = fmt(audio.currentTime);
+        });
+
+        audio.addEventListener('ended', () => {
+            playIcon.className = 'fas fa-play';
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
             testimonialSwiper.autoplay.start();
             testimonialSwiper.allowTouchMove = true;
         });
-        testimonialAudio.addEventListener('ended', () => {
-            testimonialSwiper.autoplay.start();
-            testimonialSwiper.allowTouchMove = true;
+
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const pct = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = pct * audio.duration;
         });
     }
 
