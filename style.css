@@ -270,9 +270,9 @@ section { padding: 100px 0; }
 .testimonial-carousel .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 10px; }
 .testimonial-card { background-color: #080808; padding: 40px; border-radius: 12px; border-top: 4px solid var(--primary-color); width: 100%; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); text-align: left; }
 .testimonial-card blockquote { font-size: 1.2rem; font-style: italic; color: #e0e0e0; line-height: 1.6; border-left: 3px solid var(--primary-color); padding-left: 20px; margin-bottom: 30px; position: relative; }
-.testimonial-card blockquote::before { content: '“'; font-family: Georgia, serif; font-size: 4rem; color: var(--primary-color); opacity: 0.2; position: absolute; left: -15px; top: -15px; }
 .testimonial-author { font-weight: 600; font-size: 1.1rem; color: var(--text-color); }
 .testimonial-author span { display: block; font-weight: 400; font-size: 0.9rem; color: #aaa; margin-top: 5px; }
+.testimonial-audio { width: 100%; margin-bottom: 30px; border-radius: 8px; filter: invert(1) hue-rotate(180deg); }
 
 /* --- SEÇÃO DE FAQ --- */
 #faq { background-color: var(--background-color); }

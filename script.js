@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- NOVO CARROSSEL DE DEPOIMENTOS (SWIPER.JS) ---
-    new Swiper('.testimonial-carousel', {
+    const testimonialSwiper = new Swiper('.testimonial-carousel', {
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
@@ -45,6 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
             clickable: true,
         },
     });
+
+    // --- TRAVA O CARROSSEL DE DEPOIMENTOS ENQUANTO O ÁUDIO TOCA ---
+    const testimonialAudio = document.querySelector('.testimonial-audio');
+    if (testimonialAudio) {
+        testimonialAudio.addEventListener('play', () => {
+            testimonialSwiper.autoplay.stop();
+            testimonialSwiper.allowTouchMove = false;
+        });
+        testimonialAudio.addEventListener('pause', () => {
+            testimonialSwiper.autoplay.start();
+            testimonialSwiper.allowTouchMove = true;
+        });
+        testimonialAudio.addEventListener('ended', () => {
+            testimonialSwiper.autoplay.start();
+            testimonialSwiper.allowTouchMove = true;
+        });
+    }
 
    // --- SCRIPT PARA O ACORDEÃO DO FAQ ---
 const faqItems = document.querySelectorAll('.faq-item');
